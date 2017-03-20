@@ -51,7 +51,10 @@ last(names, function(lastName){
 // 3. Write a function called multiply that multiplies two numbers using a callback function.
 
   //Code Here
-
+var multiply = function(num1, num2, cb) {
+  var answer = num1 * num2;
+  cb(answer);
+}
 
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -63,6 +66,14 @@ multiply(4, 3, function(answer){
 // If it does, return true using the callback, if not return false.
 
   //Code Here 
+var contains = function(names, str, cb) {
+  var result = false;
+  if(names.indexof(str) !== -1) {
+    result = true;
+  }
+  cb(result);
+}
+
 
 contains(names, 'Colt', function(result){
   if(result === true){
