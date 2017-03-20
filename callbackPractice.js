@@ -23,6 +23,9 @@ and what you should write is the sayHi function that makes the code above work,
 // 1. Write a function called first that returns the first item of the array using a callback function
 
   // Code Here
+  var first = function(arr,cb) {
+    cb(arr);
+  };
 
   
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -35,6 +38,9 @@ first(names, function(firstName){
 // 2. Write a function called last which returns the last item of the array using a callback function.
 
   //Code Here
+  var last = function(arr, cb) {
+    cd(arr);
+  }
 
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
