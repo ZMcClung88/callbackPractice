@@ -27,6 +27,8 @@ and what you should write is the sayHi function that makes the code above work,
     cb(arr);
   };
 
+
+
   
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -89,6 +91,20 @@ contains(names, 'Colt', function(result){
 // the callback function with the array of unique names.
 
     //Code Here
+var uniq = function(names, cb) {
+  var uniqArr = [];
+  names.sort();
+  console.log(names);
+  for(var i = 0; i < parseInt(names.length) - 1; i++) {
+    console.log(names[n], names[n +1]);
+    if (names[n] !== names[n+1] && uniqArr.indexOf(names[n]) === -1){
+            uniqArr.push(names[n]);
+        }else if (names[n] !== names[n+1] || uniqArr.indexOf(names[n]) === -1){
+            uniqArr.push(names[n+1]);
+    }
+  }
+  cb(uniqArr);
+}
 
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -100,6 +116,16 @@ uniq(names, function(uniqArr){
 
     //Code Here 
 
+    var each = function(names,cb){
+    var item;
+    var indice;
+    for (var i in names){
+        item = names[i];
+        indice = i;
+        cb(item,indice);
+      }
+    };
+
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
@@ -110,6 +136,16 @@ each(names, function(item, indice){
 // and returns that user.
 
  //Code Here
+var getUserById = function(users, str, cb){
+    var user;
+    for (var i in users) {
+        if (users[i].id === str){
+            user = users[i];
+        }
+    }
+    cb(user);
+};
+
 
 var users = [
   {
