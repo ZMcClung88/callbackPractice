@@ -24,7 +24,7 @@ and what you should write is the sayHi function that makes the code above work,
 
   // Code Here
   var first = function(arr,cb) {
-    cb(arr);
+    return cb(arr[0]);
   };
 
 
@@ -41,7 +41,7 @@ first(names, function(firstName){
 
   //Code Here
   var last = function(arr, cb) {
-    cd(arr);
+    cb(arr[arr.length - 1]);
   }
 
 last(names, function(lastName){
@@ -55,7 +55,7 @@ last(names, function(lastName){
   //Code Here
 var multiply = function(num1, num2, cb) {
   var answer = num1 * num2;
-  cb(answer);
+  return cb(answer);
 }
 
 multiply(4, 3, function(answer){
@@ -68,12 +68,14 @@ multiply(4, 3, function(answer){
 // If it does, return true using the callback, if not return false.
 
   //Code Here 
-var contains = function(names, str, cb) {
-  var result = false;
-  if(names.indexof(str) !== -1) {
-    result = true;
+function contains(arr, name, cb) {
+  for(var i = 0; i < arr.length; i++) {
+    if(arr[i] === name) {
+      return cb(true);
+    } else {
+      return cb(false);
+    }
   }
-  cb(result);
 }
 
 
@@ -91,19 +93,16 @@ contains(names, 'Colt', function(result){
 // the callback function with the array of unique names.
 
     //Code Here
-var uniq = function(names, cb) {
-  var uniqArr = [];
-  names.sort();
-  console.log(names);
-  for(var i = 0; i < parseInt(names.length) - 1; i++) {
-    console.log(names[n], names[n +1]);
-    if (names[n] !== names[n+1] && uniqArr.indexOf(names[n]) === -1){
-            uniqArr.push(names[n]);
-        }else if (names[n] !== names[n+1] || uniqArr.indexOf(names[n]) === -1){
-            uniqArr.push(names[n+1]);
+function uniq(arr,cb) {
+    for(var i = 0; i < arr.length; i++) {
+      for(var j = i + 1; j < arr.length; j++) {
+        if(arr[i] === arr[j]) {
+          arr.splice(j, 1);
+          j--;
+        }
+      }
     }
-  }
-  cb(uniqArr);
+    return cb(arr);
 }
 
 uniq(names, function(uniqArr){
@@ -115,16 +114,18 @@ uniq(names, function(uniqArr){
 // function to return the indices and item.
 
     //Code Here 
+    var a;
+    var b;
 
-    var each = function(names,cb){
-    var item;
-    var indice;
-    for (var i in names){
-        item = names[i];
-        indice = i;
-        cb(item,indice);
+    function each(arr,cb) {
+      for(var i = 0; i < arr.length; i++) {
+        a = i;
+        b = arr[i];
+        cb(a,b);
       }
-    };
+    }
+    
+    
 
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
